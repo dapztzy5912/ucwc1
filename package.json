@@ -1,0 +1,26 @@
+{
+  "name": "whatsapp-clone",
+  "version": "1.0.0",
+  "description": "WhatsApp Clone with private chat functionality",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "client": "cd public && live-server",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.3",
+    "socket.io": "^4.1.2"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.2",
+    "live-server": "^1.2.1",
+    "nodemon": "^2.0.7"
+  }
+}
