@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Clone</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Halaman Auth (Login/Register) -->
+        <div id="auth-page" class="page">
+            <div class="auth-container">
+                <h1>WhatsApp Clone</h1>
+                <div id="auth-form">
+                    <div id="login-form">
+                        <h2>Login</h2>
+                        <input type="text" id="login-phone" placeholder="Nomor (max 6 digit)" maxlength="6">
+                        <button id="login-btn">Login</button>
+                        <p>Belum punya akun? <a href="#" id="show-register">Daftar</a></p>
+                    </div>
+                    <div id="register-form" style="display: none;">
+                        <h2>Daftar</h2>
+                        <input type="text" id="register-name" placeholder="Nama">
+                        <input type="text" id="register-phone" placeholder="Nomor (max 6 digit)" maxlength="6">
+                        <button id="register-btn">Daftar</button>
+                        <p>Sudah punya akun? <a href="#" id="show-login">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Halaman Utama (Setelah Login) -->
+        <div id="main-page" class="page" style="display: none;">
+            <div class="sidebar">
+                <div class="header">
+                    <div class="user-profile">
+                        <img id="user-avatar" src="images/default-avatar.png" alt="Profile">
+                        <span id="user-name"></span>
+                    </div>
+                    <div class="status" id="user-status">Offline</div>
+                </div>
+                
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="chats">Chats</button>
+                    <button class="tab-btn" data-tab="contacts">Contacts</button>
+                    <button class="tab-btn" data-tab="profile">Profile</button>
+                </div>
+                
+                <div class="tab-content" id="chats-tab">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search chats...">
+                    </div>
+                    <div class="chat-list" id="chat-list">
+                        <!-- Daftar chat akan dimuat di sini -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="contacts-tab" style="display: none;">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search contacts...">
+                    </div>
+                    <button id="add-contact-btn">Add New Contact</button>
+                    <div class="contact-list" id="contact-list">
+                        <!-- Daftar kontak akan dimuat di sini -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="profile-tab" style="display: none;">
+                    <div class="profile-info">
+                        <img id="profile-avatar" src="images/default-avatar.png" alt="Profile">
+                        <h2 id="profile-name"></h2>
+                        <p id="profile-bio">No bio</p>
+                        <button id="edit-profile-btn">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-area">
+                <div id="no-chat-selected">
+                    <p>Select a chat to start messaging</p>
+                </div>
+                <div id="chat-window" style="display: none;">
+                    <div class="chat-header">
+                        <img id="chat-avatar" src="images/default-avatar.png" alt="Contact">
+                        <div class="chat-info">
+                            <h3 id="chat-contact-name"></h3>
+                            <p id="chat-contact-status">Offline</p>
+                        </div>
+                    </div>
+                    <div class="messages" id="messages">
+                        <!-- Pesan akan dimuat di sini -->
+                    </div>
+                    <div class="message-input">
+                        <input type="text" id="message-text" placeholder="Type a message...">
+                        <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                        <button id="send-image-btn">📷</button>
+                        <button id="send-message-btn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Edit Profile -->
+    <div id="edit-profile-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="profile-form">
+                <div class="form-group">
+                    <label for="edit-name">Name:</label>
+                    <input type="text" id="edit-name">
+                </div>
+                <div class="form-group">
+                    <label for="edit-bio">Bio:</label>
+                    <textarea id="edit-bio"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="edit-avatar">Profile Picture:</label>
+                    <input type="file" id="edit-avatar" accept="image/*">
+                </div>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal untuk Add Contact -->
+    <div id="add-contact-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Add New Contact</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="contact-name">Name:</label>
+                    <input type="text" id="contact-name">
+                </div>
+                <div class="form-group">
+                    <label for="contact-phone">Phone Number (max 6 digit):</label>
+                    <input type="text" id="contact-phone" maxlength="6">
+                </div>
+                <button type="submit">Add Contact</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/contacts.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
